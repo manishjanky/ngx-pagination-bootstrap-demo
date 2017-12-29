@@ -3039,7 +3039,7 @@ export class AppComponent {
   sdata = this.sampleData.slice(0,10);
   
   getPageData($event,table){
-    if(table==2){
+    if(table == 2){
       this.sdata = $event.data;
     }else{
       this.data = $event.data;
