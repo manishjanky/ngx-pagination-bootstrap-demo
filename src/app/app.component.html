@@ -1,0 +1,240 @@
+<div class="container pt-1">
+  <div class="row white mb-0">
+    <div class="col-sm-6">
+      <h4>ngx-pagination-bootstrap demo</h4>
+    </div>
+    <div class="col-sm-6">
+      <a href="https://manishjanky.github.io/#/" class="blue-text float-right pt-1" target="_blank">Developed By:Manish</a>
+    </div>
+  </div>
+  <div class="text-center pt-5 pb-5">
+    <h1 class="text-primary">ngx-pagination-bootstrap</h1>
+
+    <h5 class="text-primary">A Bootstrap(4) based pagination module for angulat(2+) applications.</h5>
+    <div>
+      <a href="https://github.com/manishjanky/ngx-pagination-bootstrap" class="btn btn-primary" style="margin:10px;">
+        <span class="fa fa-github"> Github</span>
+      </a>
+      <a href="https://github.com/manishjanky/ngx-pagination-bootstrap/issues" class="btn btn-primary" style="margin:10px;">
+        <span class="fa fa-bug"> Report a bug</span>
+      </a>
+    </div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':tab==1}" (click)="tab=1">Documentation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active':tab==2}" (click)="tab=2">Demo</a>
+    </li>
+  </ul>
+  <div class="row white pl-2" *ngIf="tab==1">
+    <!-- <div class="col-sm-12 pt-2">
+      <h3>
+        <span class="fa fa-hourglass-start"></span>Getting Started</h3>
+    </div> -->
+    <div class="col-sm-12 pt-1">
+      <h4>1.Installation</h4>
+      <pre class="codeBlock">
+        //using npm
+        <strong> npm install ngx-pagination-bootstrap</strong>
+
+        //using yarn
+        <strong> yarn add ngx-pagination-bootstrap</strong>
+        <strong> yarn install</strong>
+
+        //Install all the dependencies
+        <strong>npm install bootstrap@4.0.0-alpha.6 --save-dev</strong></pre>
+      <ul>
+        <li>Right now
+          <strong>bootstrap@4.0.0-alpha.6</strong> is supported will add support for other versions soon</li>
+        <li>include bootstrap scripts and styles in you angular-cli.json to be build of your build process.</li>
+        <li>or include bootstrap css in your index.html</li>
+      </ul>
+
+      <pre class="codeBlock">
+        //in angular-cli.json
+         <strong>"styles": [
+            "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+          ]</strong>
+            
+         //in your index.html 
+        <strong>&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"&gt;</strong></pre>
+    </div>
+    <div class="col-sm-12 pt-1">
+      <h4>2.Using with webpack and tsc builds/ angular-cli builds</h4>
+      <ul>
+        <li>import PaginationModule from ngx-pagination-bootstrap</li>
+        <li>add PaginationModule to the imports of your NgModule</li>
+      </ul>
+      <pre class="codeBlock">
+        <strong>
+          import {{'{'}} PaginationModule {{'}'}} from 'ngx-pagination-bootstrap'
+        
+          @NgModule({{'{'}}
+            imports: [
+              ...,
+          
+              PaginationModule
+            ],
+            ...
+          })
+          class YourModule {{'{'}} ... {{'}'}}</strong></pre>
+    </div>
+    <div class="col-sm-12 pt-1">
+      <ul>
+        <li>
+          use
+          <strong>&lt;ng-pagination&gt;&lt;/ng-pagination&gt;</strong> in your templates to add pagination in your view like below
+        </li>
+        <li>a tag in you html will look like below with all the config</li>
+      </ul>
+
+      <pre class="codeBlock">
+          <strong>&lt;ng-pagination [position]="'left'" [pageSize]="10" [itemsCount]="data.length" 
+          [data]="data" (getPageData)="getPageData($event)"&gt;&lt;/ng-pagination&gt;</strong></pre>
+    </div>
+    <div class="col-sm-12 pt-1">
+      <h4>3.Config</h4>
+      <h6>Input</h6>
+      <ul>
+        <li>
+          <strong>pageSize: number</strong> - Size of a page i.e number of items to be displayed in one page.
+        </li>
+        <li>
+          <strong>itemsCount: number</strong> - total no of itmes that needs ro be paged/total no of records.
+        </li>
+        <li>
+          <strong>position: string</strong> - position of the pagination respect to parent contrainer of your pagination component<strong> ['left','center','right']</strong>.
+        </li>
+        <li>
+          <strong>data: Array</strong> - Optional | the data needs to be paged default is null. If pagination is handled by api no
+          need of data.
+        </li>
+      </ul>
+
+      <h6>Output</h6>
+      <ul>
+        <li>
+          <strong>getPageData: EventEmitter</strong> - emmited when user navigates to a page. Caputure this and update you view data.
+          The events contains the following info
+        </li>
+      </ul>
+      <pre class="codeBlock">
+        {{'{'}}
+            event: event: Event,
+            pageNo: pageNo: number,
+            pageSize:pageSize: number,
+            data: null| Array,
+        {{'}'}}</pre>
+      <ul>
+        <li>
+          <strong>event: Event -</strong> the triggered event
+        </li>
+        <li>
+          <strong>pageNo: number -</strong> current page number
+        </li>
+        <li>
+            <strong>pageSize: number -</strong> current page size. Items per page.
+          </li>
+        <li>
+          <strong>data: Array| null -</strong> data is the array of records that belongs to this page. Will be null if data was not passed and you
+          can fetch data from your api or the way you want it to handle
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="row white pl-2 pt-2" *ngIf="tab==2">
+    <div class="col-sm-12">
+      <h3>Demos</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="text-center">
+            <td colspan="4"><h5>Table with sample data</h5></td>
+          </tr>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Gender
+            </th>
+            <th>
+              Company
+            </th>
+            <th>
+              Email
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>
+              {{item.name}}
+            </td>
+            <td>
+              {{item.gender}}
+            </td>
+            <td>
+              {{item.company}}
+            </td>
+            <td>
+              {{item.email}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-sm-12">
+            <ng-pagination [pageSize]="10" [itemsCount]="sampleData.length" [data]="sampleData" (getPageData)="getPageData($event)"></ng-pagination>
+        </div>
+      </div>
+
+      <table class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <td colspan="4"><h5>Table with centered position of pagination</h5></td>
+            </tr>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Gender
+              </th>
+              <th>
+                Company
+              </th>
+              <th>
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of sdata">
+              <td>
+                {{item.name}}
+              </td>
+              <td>
+                {{item.gender}}
+              </td>
+              <td>
+                {{item.company}}
+              </td>
+              <td>
+                {{item.email}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-sm-12">
+              <ng-pagination [pageSize]="10" [position]="'center'" [itemsCount]="sampleData.length" [data]="sampleData" (getPageData)="getPageData($event,2)"></ng-pagination>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
